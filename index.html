@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Game</title>
+    <link rel="icon" type="image/x-icon" href="https://imgs.search.brave.com/sGcSwB1yrFMB02_l3qkFqEY_r01_8NK626EcY4yL2fw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9lbW9q/aWlzbGFuZC5jb20v/Y2RuL3Nob3AvcHJv/ZHVjdHMvRG9scGhp/bl9JcGhvbmVfRW1v/amlfSlBHX2xhcmdl/LnBuZz92PTE1NzE2/MDYxMTQ">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <div id="pannel">
+            <div id="timerBarContainer">
+                <div id="timerBar"></div>
+            </div>
+
+            <audio id="popSound" src="audio/pop.mp3" preload="auto"></audio>
+            <audio id="levelUpSound" src="audio/level-up.mp3" preload="auto"></audio>
+
+            <div id="start-screen">
+                <h1>Welcome to Bubble Game 🐬</h1>
+                <button id="start-btn">Start Game</button>
+            </div>
+            
+           
+            <h2 id="levelDisplay" class="level-display">Level: 1</h2>
+
+            
+            <div id="levelCompleteScreen" class="overlay hidden">
+            <div class="overlay-content">
+                <h1>🎉 Level <span id="levelNum">1</span> Complete!</h1>
+                <button onclick="nextLevel()">Next Level</button>
+            </div>
+            </div>
+
+            <div id="game-over-screen">
+                <audio id="gameOverSound" src="audio/game-over.mp3" preload="auto"></audio>
+                <h1>GAME OVER 🐬</h1>
+                <button id="restart-btn">Restart Game</button>
+            </div>
+
+            <div id="ptop">
+                
+                    <div id="elem">
+                        <h2>Hit</h2>
+                        <div id="hit" class="box">0</div>
+                    </div>
+                    <div id="elem">
+                        <h2>Timer</h2>
+                        <div id="timer" class="box">30</div>
+                    </div>
+                    <div id="elem">
+                        <h2>Score</h2>
+                        <div id="Score" class="box">0</div>
+                    </div>
+                
+            </div>
+            <div id="pbtm">
+                
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
