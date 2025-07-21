@@ -183,6 +183,14 @@ document.querySelector("#start-btn").addEventListener("click", startGame);
 document.querySelector("#restart-btn").addEventListener("click", startGame);
 
 
+// How to Play popup logic
+document.getElementById("howToPlayBtn").addEventListener("click", () => {
+    document.getElementById("howToPlayOverlay").classList.remove("hidden");
+});
+
+function closeHowToPlay() {
+    document.getElementById("howToPlayOverlay").classList.add("hidden");
+}
 
 
 
