@@ -6,6 +6,7 @@ let totalBubblesToPop = 10;
 let poppedBubbles = 0;
 let timeInterval = null;
 let gameOverSoundPlayed = false;
+let barInterval = null;
 
 
 function bubbleMaker(){
@@ -60,32 +61,40 @@ function bubbleMaker(){
         });
     });
 
-   
 }
-function timerRunner(){
-    timeInterval = setInterval(function(){
-        if(timer > 0){
-            timer--;
-            document.querySelector("#timer").textContent = timer;
-        }else{
+
+function timerRunner(duration = 30) {
+    clearInterval(timeInterval);
+    clearInterval(barInterval);
+
+    let timeLeft = duration;
+    document.querySelector("#timer").textContent = timeLeft;
+    document.querySelector("#timerBar").style.width = "100%";
+
+    timeInterval = setInterval(function () {
+        timeLeft--;
+        timer = timeLeft;
+
+        document.querySelector("#timer").textContent = timeLeft;
+
+        const percent = (timeLeft / duration) * 100;
+        document.querySelector("#timerBar").style.width = percent + "%";
+
+        if (timeLeft <= 0) {
             clearInterval(timeInterval);
+            clearInterval(barInterval);
             document.querySelector("#game-over-screen").style.display = "flex";
 
-           
             const gmeOver = document.querySelector("#gameOverSound");
             if (!gameOverSoundPlayed) {
                 gmeOver.currentTime = 0;
                 gmeOver.play();
-                gameOverSoundPlayed = true; 
+                gameOverSoundPlayed = true;
             }
-
-            
-            
-           
         }
-        
-    },1000)
+    }, 1000);
 }
+
 
 function newHitGenerator(){
     hitRn = Math.floor(Math.random()*10);
@@ -121,16 +130,13 @@ function startGame(){
 
     document.querySelector("#timerBar").style.width = "100%";
 
+    document.querySelector("#target").textContent = totalBubblesToPop;
 
-    // const timerBar = document.querySelector(".timer-bar");
-    // timerBar.classList.remove("animate");
-    // void timerBar.offsetWidth; 
-    // timerBar.classList.add("animate");
 
     bubbleMaker();
     timerRunner();
     newHitGenerator();
-    runTimerBar();
+  
 }
 
 document.querySelector("#start-btn").addEventListener("click", function(){
@@ -145,20 +151,6 @@ document.querySelector("#restart-btn").addEventListener("click", function(){
 });
 
 
-document.querySelectorAll(".bubble").forEach((bubble) => {
-  bubble.addEventListener("click", () => {
-   
-    bubble.remove(); 
-
-    score++;
-    if (score === totalBubblesToPop) {
-      clearInterval(timer);
-      document.getElementById("levelCompleteScreen").classList.remove("hidden");
-      document.getElementById("levelNum").innerText = level;
-    }
-  });
-});
-
 function nextLevel() {
     level++;
     document.getElementById("levelDisplay").innerText = "Level: " + level;
@@ -167,19 +159,22 @@ function nextLevel() {
     timer = 30;
     poppedBubbles = 0;
     score = 0;
+    totalBubblesToPop += 4;
     document.querySelector("#Score").textContent = score;
     document.querySelector("#timer").textContent = timer;
 
     document.getElementById("levelCompleteScreen").classList.add("hidden");
    
     document.querySelector("#timerBar").style.width = "100%";
+
+    document.querySelector("#target").textContent = totalBubblesToPop;
     
 
 
     bubbleMaker();
     timerRunner();
     newHitGenerator();
-    runTimerBar();
+ 
 
 }
 
@@ -188,20 +183,6 @@ document.querySelector("#start-btn").addEventListener("click", startGame);
 document.querySelector("#restart-btn").addEventListener("click", startGame);
 
 
-function runTimerBar(duration = 30) {
-    const timerBar = document.querySelector("#timerBar");
-    let timeLeft = duration;
-    let barInterval = setInterval(() => {
-        timeLeft--;
-        const percent = (timeLeft / duration) * 100;
-        timerBar.style.width = percent + "%";
-
-        if (timeLeft <= 0) {
-            clearInterval(barInterval);
-            showLevelCompleteScreen(); 
-        }
-    }, 1000);
-}
 
 
 
