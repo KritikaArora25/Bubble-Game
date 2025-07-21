@@ -31,11 +31,10 @@ A fun, interactive bubble-popping game built using **HTML, CSS, JavaScript**, an
 
 ## 📷 Screenshots
 
-> ![alt text](images/image.png)
-![alt text](images/image-1.png)
-![alt text](images/image-2.png)
-![alt text](images/image-3.png)
-
+>![Gameplay](images/image.png)
+![Level Complete](images/image-1.png)
+![Game Over Screen](images/image-2.png)
+![Starting Screen](images/image-3.png)
 ---
 
 ## 🧠 Learning Highlights
