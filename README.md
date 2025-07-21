@@ -6,7 +6,7 @@ A fun, interactive bubble-popping game built using **HTML, CSS, JavaScript**, an
 
 ## 🚀 Live Demo
 
-👉 [Play Here](https://bubble-pop-game-kritika.netlify.app/) *(will update after deployment)*
+👉 [Play Here](https://bubble-pop-game-kritika.netlify.app/) 
 
 ---
 
